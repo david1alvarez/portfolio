@@ -26,18 +26,6 @@ const Contact = () => {
   );
 };
 class App extends Component {
-  testAPIcall() {
-    const axios = require('axios');
-    axios.get('http://dnd5eapi.co/api/classes/1')
-      .then(response => {
-        console.log(response.data.url);
-        console.log(response.data.explanation);
-      })
-    .catch(error => {
-      console.log(error);
-    });
-  }
-
   render() {
     return (
         <Router>
