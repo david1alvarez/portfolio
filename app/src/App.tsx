@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { any } from 'prop-types';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import DnDDashboardContent from './dnd/home';
 
 const App: React.FC = () => {
   const http = require('https');
