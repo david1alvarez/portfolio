@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import http from 'https';
-import { any } from 'prop-types';
-
-interface Props {
-}
 
 interface State {
     displayedBoolean: boolean;
     headerWord: string;
 };
 
-export default class DnDApp extends Component<Props, State> {
+export default class DnDApp extends Component {
+    constructor(state: State) {
+        super(state)
+    }
     state: State = {
         displayedBoolean: false,
         headerWord: 'Classes'
