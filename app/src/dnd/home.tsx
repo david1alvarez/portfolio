@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import http from 'https';
-import { any } from 'prop-types';
-
-interface Props {
-    title: string;
-    subtitle: string;
-}
 
 interface State {
     displayedBoolean: boolean;
     headerWord: string;
 };
 
-export default class DnDApp extends Component<Props, State> {
+export default class DnDApp extends Component {
+    constructor(state: State) {
+        super(state)
+    }
     state: State = {
         displayedBoolean: false,
         headerWord: 'Classes'
@@ -75,14 +72,6 @@ export default class DnDApp extends Component<Props, State> {
                     <h1 id="subspec"></h1>
                     <p id="details"></p>
                 </div>
-                <div>
-                    {this.props.title}
-                </div>
-                <div>
-                    {this.props.subtitle}
-                </div>
-                <button onClick={this.changeStatus}>change state</button>
-                <div>The state is {this.state.displayedBoolean ? "True" : "False"}</div>
             </div>
         )
     }

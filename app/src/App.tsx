@@ -20,7 +20,7 @@ const App: React.FC = () => {
           </nav>
           <Switch>
             <Route path="/DnD">
-              <DnDApp title="Title" subtitle="Subtitle" />
+              <DnDApp />
             </Route>
           </Switch>
         </div>
