@@ -26,6 +26,9 @@ export default class DnDApp extends Component<Props, State> {
         var key : string | null = (document.getElementById("keyword") as HTMLInputElement).value;
         if (key == null) {return};
         this.test(this.state.headerWord.charAt(0).toLowerCase() + this.state.headerWord.slice(1) + "/" + key, false);
+        var sub : HTMLElement | null= document.getElementById("subspec");
+        if (sub == null) {return};
+        sub.innerHTML = key;
     }
 
     test(key:string, onload:boolean):any { 
@@ -56,14 +59,19 @@ export default class DnDApp extends Component<Props, State> {
                 <div>
                     <h2>{this.state.headerWord}</h2>
                 </div>
-                <div>
-                    <input type="text" id="keyword" ref="keyword"></input>
-                    <button onClick={() => {this.keywordSearch()}}>Search</button>
-                </div>
                 <button onClick={() => {this.test("classes", true)}}>Classes</button>
                 <button onClick={() => {this.test("races", true)}}>Races</button>
                 <button onClick={() => {this.test("monsters", true)}}>Monsters</button>
                 <button onClick={() => {this.test("weapons", true)}}>Weapons</button>
+                <button onClick={() => {this.test("spells", true)}}>Spells</button>
+                <div>
+                    <input type="text" id="keyword" ref="keyword"></input>
+                    <button onClick={() => {this.keywordSearch()}}>Search</button>
+                </div>
+                <div>
+                    <h1 id="subspec"></h1>
+                    <p id="details"></p>
+                </div>
                 <div>
                     {this.props.title}
                 </div>
