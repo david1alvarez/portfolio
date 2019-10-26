@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import http from 'https';
+import './home.css';
 
 interface State {
     displayedBoolean: boolean;
@@ -69,13 +70,13 @@ export default class DnDApp extends Component {
                 <button onClick={() => {this.test("monsters", true)}}>Monsters</button>
                 <button onClick={() => {this.test("weapons", true)}}>Weapons</button>
                 <button onClick={() => {this.test("spells", true)}}>Spells</button>
-                <div>
+                <div id = "searchbar">
                     <input type="text" id="keyword" ref="keyword"></input>
                     <button onClick={() => {this.keywordSearch()}}>Search</button>
                 </div>
                 <div>
                     <h1 id="subspec"></h1>
-                    <p id="details"></p>
+                    <h1 id="details"></h1>
                 </div>
             </div>
         )

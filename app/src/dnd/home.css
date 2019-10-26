@@ -1,0 +1,19 @@
+body{
+    text-align: center;
+}
+#details {
+    width: 500px;
+}
+#subspec{
+    width: 100px;
+}
+button{
+    width: 80px;
+    height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+#searchbar {
+    margin-top: 20px;
+}
