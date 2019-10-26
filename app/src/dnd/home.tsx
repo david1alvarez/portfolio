@@ -10,14 +10,12 @@ interface Props {
 interface State {
     displayedBoolean: boolean;
     headerWord: string;
-    searchValue: string;
 };
 
 export default class DnDApp extends Component<Props, State> {
     state: State = {
         displayedBoolean: false,
-        headerWord: 'Classes',
-        searchValue: ''
+        headerWord: 'Classes'
     };
 
     changeStatus = () => {
@@ -25,9 +23,9 @@ export default class DnDApp extends Component<Props, State> {
     }
 
     keywordSearch():any {
-        var key : HTMLElement | null = document.getElementById("keyword");
-        if ((key == null) || (key.value == null)) {return};
-        this.test(this.state.headerWord + "/" + key.value);
+        var key : string | null = (document.getElementById("keyword") as HTMLInputElement).value;
+        if (key == null) {return};
+        this.test(this.state.headerWord.charAt(0).toLowerCase() + this.state.headerWord.slice(1) + "/" + key);
     }
 
     test(key:string):any { 
@@ -57,7 +55,7 @@ export default class DnDApp extends Component<Props, State> {
                     <h2>{this.state.headerWord}</h2>
                 </div>
                 <div>
-                    <input type="text" id="keyword" ref="keyword" value={this.state.searchValue}></input>
+                    <input type="text" id="keyword" ref="keyword"></input>
                     <button onClick={() => {this.keywordSearch()}}>Search</button>
                 </div>
                 <button onClick={() => {this.test("classes")}}>Classes</button>
