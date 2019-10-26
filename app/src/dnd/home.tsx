@@ -46,6 +46,9 @@ export default class DnDApp extends Component<Props, State> {
           // The whole response has been received. Print out the result.
           resp.on('end', () => {
             alert(data);
+            if (!onload) {
+                alert(data.desc);
+            }
           });
     
         }).on("error", (err:any) => {
