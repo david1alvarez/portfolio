@@ -25,11 +25,13 @@ export default class DnDApp extends Component<Props, State> {
     keywordSearch():any {
         var key : string | null = (document.getElementById("keyword") as HTMLInputElement).value;
         if (key == null) {return};
-        this.test(this.state.headerWord.charAt(0).toLowerCase() + this.state.headerWord.slice(1) + "/" + key);
+        this.test(this.state.headerWord.charAt(0).toLowerCase() + this.state.headerWord.slice(1) + "/" + key, false);
     }
 
-    test(key:string):any { 
-        this.setState({headerWord: key.charAt(0).toUpperCase() + key.slice(1)});
+    test(key:string, onload:boolean):any { 
+        if (onload) {
+            this.setState({headerWord: key.charAt(0).toUpperCase() + key.slice(1)});
+        }
         http.get('https://api.open5e.com/' + key, (resp:any) => {
           let data = '';
     
@@ -58,10 +60,10 @@ export default class DnDApp extends Component<Props, State> {
                     <input type="text" id="keyword" ref="keyword"></input>
                     <button onClick={() => {this.keywordSearch()}}>Search</button>
                 </div>
-                <button onClick={() => {this.test("classes")}}>Classes</button>
-                <button onClick={() => {this.test("races")}}>Races</button>
-                <button onClick={() => {this.test("monsters")}}>Monsters</button>
-                <button onClick={() => {this.test("weapons")}}>Weapons</button>
+                <button onClick={() => {this.test("classes", true)}}>Classes</button>
+                <button onClick={() => {this.test("races", true)}}>Races</button>
+                <button onClick={() => {this.test("monsters", true)}}>Monsters</button>
+                <button onClick={() => {this.test("weapons", true)}}>Weapons</button>
                 <div>
                     {this.props.title}
                 </div>
