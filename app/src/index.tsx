@@ -10,9 +10,6 @@ const routing = (
     <Router>
         <div>
             <Route path="/" component={App} />
-            <Route path="/DnD" component={
-                (Props: any) => <DnDApp title="this is a title" subtitle="this is a subtitle" {...Props} />}
-            />
         </div>
     </Router>
 )
