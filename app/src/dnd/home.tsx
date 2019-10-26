@@ -10,19 +10,28 @@ interface Props {
 interface State {
     displayedBoolean: boolean;
     headerWord: string;
+    searchValue: string;
 };
 
 export default class DnDApp extends Component<Props, State> {
     state: State = {
         displayedBoolean: false,
-        headerWord: 'Classes'
+        headerWord: 'Classes',
+        searchValue: ''
     };
 
     changeStatus = () => {
         this.setState({displayedBoolean: (!this.state.displayedBoolean)});
     }
 
+    keywordSearch():any {
+        var key : HTMLElement | null = document.getElementById("keyword");
+        if ((key == null) || (key.value == null)) {return};
+        this.test(this.state.headerWord + "/" + key.value);
+    }
+
     test(key:string):any { 
+        this.setState({headerWord: key.charAt(0).toUpperCase() + key.slice(1)});
         http.get('https://api.open5e.com/' + key, (resp:any) => {
           let data = '';
     
@@ -46,6 +55,10 @@ export default class DnDApp extends Component<Props, State> {
             <div>
                 <div>
                     <h2>{this.state.headerWord}</h2>
+                </div>
+                <div>
+                    <input type="text" id="keyword" ref="keyword" value={this.state.searchValue}></input>
+                    <button onClick={() => {this.keywordSearch()}}>Search</button>
                 </div>
                 <button onClick={() => {this.test("classes")}}>Classes</button>
                 <button onClick={() => {this.test("races")}}>Races</button>
