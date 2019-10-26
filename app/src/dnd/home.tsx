@@ -42,9 +42,14 @@ export default class DnDApp extends Component {
     
           // The whole response has been received. Print out the result.
           resp.on('end', () => {
-            alert(data);
             if (!onload) {
-                alert(data.desc);
+                var obj = JSON.parse(data);
+                var details : HTMLElement | null = document.getElementById("details");
+                if (details == null) {return}
+                details.innerHTML = obj.desc;
+            }
+            else {
+                alert(data);
             }
           });
     
