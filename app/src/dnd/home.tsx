@@ -9,11 +9,13 @@ interface Props {
 
 interface State {
     displayedBoolean: boolean;
+    headerWord: string;
 };
 
 export default class DnDApp extends Component<Props, State> {
     state: State = {
-        displayedBoolean: false
+        displayedBoolean: false,
+        headerWord: 'Classes'
     };
 
     changeStatus = () => {
@@ -42,10 +44,13 @@ export default class DnDApp extends Component<Props, State> {
     render() {
         return(
             <div>
-                <button onClick={this.test("classes")}>Classes</button>
-                <button onClick={this.test("races")}>Races</button>
-                <button onClick={this.test("monsters")}>Monsters</button>
-                <button onClick={this.test("weapons")}>Weapons</button>
+                <div>
+                    <h2>{this.state.headerWord}</h2>
+                </div>
+                <button onClick={() => {this.test("classes")}}>Classes</button>
+                <button onClick={() => {this.test("races")}}>Races</button>
+                <button onClick={() => {this.test("monsters")}}>Monsters</button>
+                <button onClick={() => {this.test("weapons")}}>Weapons</button>
                 <div>
                     {this.props.title}
                 </div>
