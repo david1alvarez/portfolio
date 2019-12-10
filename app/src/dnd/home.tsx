@@ -22,16 +22,22 @@ export default class DnDApp extends Component {
 
     keywordSearch():any {
         var key : string | null = (document.getElementById("keyword") as HTMLInputElement).value;
-        if (key == null) {return};
+        if (key == null) {return}
+        if(key.search(' ')) {
+            key = key.replace(' ', '-');
+        }
         this.test(this.state.headerWord.charAt(0).toLowerCase() + this.state.headerWord.slice(1) + "/" + key, false);
         var sub : HTMLElement | null= document.getElementById("subspec");
-        if (sub == null) {return};
+        if (sub == null) {return}
         sub.innerHTML = key;
     }
 
     test(key:string, onload:boolean):any { 
         if (onload) {
             this.setState({headerWord: key.charAt(0).toUpperCase() + key.slice(1)});
+        }
+        if(key.search(' ')) {
+            key = key.replace(' ', '-');
         }
         http.get('https://api.open5e.com/' + key, (resp:any) => {
           let data = '';
